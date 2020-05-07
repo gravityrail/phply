@@ -314,7 +314,7 @@ EOT;
         ('CLOSE_TAG', '?>'),
     ]
     eq_tokens(input, expected, ignore=())
-    
+
 def test_commented_close_tag():
     input = '<? {\n// ?>\n<?\n} ?>'
     expected = [
@@ -390,5 +390,17 @@ def test_exit_die():
         ('SEMI', ';'),
         ('DIE', 'die'),
         ('SEMI', ';'),
+    ]
+    eq_tokens(input, expected)
+
+def test_spread_var():
+    input = '<? $var = [ ...$othervar ];'
+    expected = [
+        ('VARIABLE', '$var'),
+        ('EQUALS', '='),
+        ('LBRACKET', '['),
+        ('VARIABLE', '...$othervar'),
+        ('RBRACKET', ']'),
+        ('SEMI', ';')
     ]
     eq_tokens(input, expected)
