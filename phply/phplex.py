@@ -258,7 +258,7 @@ def t_php_STRING(t):
 
 # Variable
 def t_php_VARIABLE(t):
-    r'\$[A-Za-z_][\w_]*'
+    r'(?:\.\.\.)?\$[A-Za-z_][\w_]*'
     return t
 
 # Floating literal
